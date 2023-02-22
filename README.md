@@ -13,6 +13,29 @@ following operations at your disposal:
 
 ![Screenshot 2023-02-22 at 11-52-21 anaiel_push_swap 42 project push_swap](https://user-images.githubusercontent.com/103336451/220613061-034bfcc4-0da5-432b-94b1-43cf12ee8506.png)
 
+# Sort with 3 and 5 numbers
+
+To do this 2 options when we have only 3 or 5 numbers is quite simple.
+
+## Sort 3
+To do the sort with 3 numbers is quite simple, there are only 5 possible cases as follow:
+
+![image](https://user-images.githubusercontent.com/103336451/220641266-2a37b6fe-dd3b-477b-b0f1-a9b276f59d02.png)
+
+## Sort 5
+
+With 5 numbers the process is simple aswell.
+
+1- Firstly we need to find the Max and Min numbers in our stackA;<br />
+2- After that we need to send to stackB only the max and min numbers;<br />
+3- At stackA we will have only 3 numbers and we sort them;<br />
+4- At this point you will only need to send back the Max and Min numbers back to stackA and you will only need to use the PA and RA instructions.
+
+It will work like this:
+
+![image](https://user-images.githubusercontent.com/103336451/220652637-4d480594-5418-4b05-bd48-448126eba871.png)
+
+
 # My algorithm
 I used a version of the radix algorithm in this project.
 ## How does radix works
@@ -56,5 +79,50 @@ In code it will look something like this:
 
 ![image](https://user-images.githubusercontent.com/103336451/220624886-833a56c4-b78e-4ae0-ab0c-09dcabc50046.png)
 
-# Apply Radix in Push_Swap
+# Implement Radix in Push_Swap
 
+Back to the example above, if we want a list of instructions to sort 55 -999 651 -20 99 -3 2, is the same as sorting 4 0 6 1 5 2 3.<br />
+To implement the radix on this project we will work with binary operators, and with that the array with 4 0 6 1 5 2 3 in the base of 2 will be 100 000 110 001 101 010 011.
+
+Now the goal is to send to stackB the numbers that in the least significant bit have 0.<br />
+Then we send everything from StackB to StackA using PA and shift (<<) once to the left so that next time we can check the next bit.<br />
+Repeat the process until everything is sorted. Simple as that.
+
+Something like this:
+
+![image](https://user-images.githubusercontent.com/103336451/220665254-eed4155a-a6d2-4ed9-8a72-f2acaa98d2b2.png)
+
+![image](https://user-images.githubusercontent.com/103336451/220666194-1bdca30d-56e9-4513-8910-0171f84085ac.png)
+
+![image](https://user-images.githubusercontent.com/103336451/220666321-e10840bc-0d77-4005-a5cf-f959b4650b76.png)
+
+![image](https://user-images.githubusercontent.com/103336451/220665879-6f494fd9-b539-4369-9a73-cd5468c7602d.png)
+
+### Extra:
+
+**NOTE:** To save movements and in order to reach a higher evaluation grade, what I chose to do is that when I send the numbers that have the number 0 in that bit to stackB, before sending them back to stackA what I do is check if in the next bit that number has 0 or 1 if it has a 0 it continues in stackB so that I'm not sending it to stackA and then send that number back again to stackB in the next process. This way I could save movements and everything works perfectly
+
+# How to test this project
+
+For testing I mainly used the Push_Swap Visualizer and the checker that is provided in the checker.
+
+## Push_Swap Visualizer
+
+Visualizer is a great help so that I can visually see the step by step process that my project performs.
+
+It is possible to download it through this link:<br />
+https://github.com/o-reo/push_swap_visualizer
+
+![1 ZLKF3qJ75poRylB9g8wM5w](https://user-images.githubusercontent.com/103336451/220671702-167e5bfa-7d01-4295-99e8-c3d9e181e71a.gif)
+
+## Checker
+
+The checker is provided by the school and shows 2 possible outputs, OK if the program is operational or KO if something is wrong.
+
+Example:
+
+![Screenshot from 2023-02-22 15-37-16](https://user-images.githubusercontent.com/103336451/220674099-a6a1197d-74b3-4a45-a138-2427e60479de.png)
+
+## Final grade
+
+![image](https://user-images.githubusercontent.com/103336451/220674652-02860026-c6e8-41e8-89b1-7c94f2e1d1da.png)
