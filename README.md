@@ -104,7 +104,7 @@ Something like this:
 
 # How to test this project
 
-For testing I mainly used the Push_Swap Visualizer and the checker that is provided in the checker.
+For testing I mainly used the Push_Swap Visualizer and the checker that is provided in the project subject.
 
 ## Push_Swap Visualizer
 
